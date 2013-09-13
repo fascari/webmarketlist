@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/default.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditItenslistacomprasTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages layout="table" infoClass="alert alert-success" errorClass="alert alert-error"/>
+                <br/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditItenslistacomprasLabel_listacompras}" for="listacompras" />
+                    <h:selectOneMenu id="listacompras" value="#{itenslistacomprasController.selected.listacompras}" title="#{bundle.EditItenslistacomprasTitle_listacompras}" required="true" requiredMessage="#{bundle.EditItenslistacomprasRequiredMessage_listacompras}">
+                        <f:selectItems value="#{listacomprasController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditItenslistacomprasLabel_produtos}" for="produtos" />
+                    <h:selectOneMenu id="produtos" value="#{itenslistacomprasController.selected.produtos}" title="#{bundle.EditItenslistacomprasTitle_produtos}" required="true" requiredMessage="#{bundle.EditItenslistacomprasRequiredMessage_produtos}">
+                        <f:selectItems value="#{produtosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditItenslistacomprasLabel_idSupermercados}" for="idSupermercados" />
+                    <h:selectOneMenu id="idSupermercados" value="#{itenslistacomprasController.selected.idSupermercados}" title="#{bundle.EditItenslistacomprasTitle_idSupermercados}" >
+                        <f:selectItems value="#{supermercadosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditItenslistacomprasLabel_quantidade}" for="quantidade" />
+                    <h:inputText class="span1 text-right" id="quantidade" value="#{itenslistacomprasController.selected.quantidade}" title="#{bundle.EditItenslistacomprasTitle_quantidade}" required="true" requiredMessage="#{bundle.EditItenslistacomprasRequiredMessage_quantidade}">
+                        <f:validateLongRange minimum="1"/>
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditItenslistacomprasLabel_valor}" for="valor" />
+                    <h:inputText class="span2 text-right" id="valor" value="#{itenslistacomprasController.selected.valor}" title="#{bundle.EditItenslistacomprasTitle_valor}" required="true" requiredMessage="#{bundle.EditItenslistacomprasRequiredMessage_valor}">
+                        <f:convertNumber type="currency" pattern="#0.00"/>
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditItenslistacomprasLabel_comprado}" for="comprado" />
+                    <h:selectBooleanCheckbox class="checkbox" id="comprado" value="#{itenslistacomprasController.selected.compradoBoolean}" title="#{bundle.EditItenslistacomprasTitle_comprado}"/>
+                </h:panelGrid>
+                <div class="form-actions">
+                    <h:commandButton class="btn btn-primary" action="#{itenslistacomprasController.update}" value="#{bundle.EditItenslistacomprasSaveLink}"/>
+                    <a />
+                    <h:link class="btn" outcome="View" value="#{bundle.EditItenslistacomprasViewLink}"/>
+                    <a />
+                    <h:commandButton class="btn" action="#{itenslistacomprasController.prepareList}" value="#{bundle.EditItenslistacomprasShowAllLink}" immediate="true"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

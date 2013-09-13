@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/default-list.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ComprarTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:form id="formCompras" prependId="false">
+
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages layout="table" infoClass="alert alert-success" errorClass="alert alert-error"/>
+                    <br/>
+                </h:panelGroup>
+
+                <h:outputLabel class="badge" value="#{bundle.CreateItenslistacomprasLabel_listacompras}" for="listacompras" />
+                <div class="controls controls-row">
+                    <h:selectOneMenu class="span4" id="listacompras" value="#{comprarBean.itemCompra.listacompras}" title="#{bundle.CreateItenslistacomprasTitle_listacompras}" required="true" requiredMessage="#{bundle.CreateItenslistacomprasRequiredMessage_listacompras}">
+                        <f:selectItems value="#{listacomprasController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <span style="padding-left:10px"/>
+                    <h:commandButton class="btn btn-small" actionListener="#{comprarBean.filterItemsByList}" value="Listar"/>
+                    <a/>
+                    <h:link class="btn btn-small" value="Limpar" outcome="Comprar"/>
+                </div>
+
+                <h:panelGroup id ="panel" rendered="#{comprarBean.itenslistacompras.rowCount > 0}">
+                    <h:dataTable id="tableCompras" class="table table-hover table-bordered table-striped"
+                                 columnClasses="span1, span4, span5, span5, span2"
+                                 value="#{comprarBean.itenslistacompras}" var="item">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Comprar"/>
+                            </f:facet>
+                            <div class="text-center">
+                                <h:selectBooleanCheckbox id="comprar" class="checkbox" onclick="" value ="#{item.compradoBoolean}">
+                                    <f:ajax event="click" execute="@form" listener="#{comprarBean.calculaTotalCompra}" render=":formCompras:totalCompras"  />
+                                </h:selectBooleanCheckbox>
+                            </div>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListItenslistacomprasTitle_listacompras}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.listacompras.descricao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListItenslistacomprasTitle_produtos}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.produtos.nome}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListItenslistacomprasTitle_idSupermercados}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idSupermercados.nome}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListItenslistacomprasTitle_valor}"/>
+                            </f:facet>
+                            <h:outputText id="valor" value="#{item.valor}">
+                                <f:convertNumber type="currency" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText id="qtde" value="#{bundle.ListItenslistacomprasTitle_quantidade}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.quantidade}"/>
+                        </h:column>
+                    </h:dataTable>
+
+                    <table align="right">
+                        <tr>
+                            <td width="71%">
+                                <br/>
+                                <h:outputText class="text-right" value="Total: "/>
+
+                                <div class="input-prepend input-append">
+                                    <span class="add-on">R$</span>
+                                    <h:inputText id="totalCompras" disabled="true" class="span2 text-right" value="#{comprarBean.totalCompra}">
+                                        <f:convertNumber type="currency" currencySymbol="" />
+                                    </h:inputText>
+                                    <span class="add-on">.00</span>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </h:panelGroup>
+                <div class="form-actions">
+                    <h:commandButton class="btn btn-primary" action="#{comprarBean.comprar}" value="#{bundle.ComprarCreateLink}"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

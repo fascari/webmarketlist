@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/default.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSupermercadosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages layout="table" infoClass="alert alert-success" errorClass="alert alert-error"/>
+                <br/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSupermercadosLabel_idSupermercados}"/>
+                    <h:inputText class="span1" disabled="true" value="#{supermercadosController.selected.idSupermercados}" title="#{bundle.ViewSupermercadosTitle_idSupermercados}"/>
+                    <h:outputText value="#{bundle.ViewSupermercadosLabel_nome}"/>
+                    <h:inputText class="span7" disabled="true" value="#{supermercadosController.selected.nome}" title="#{bundle.ViewSupermercadosTitle_nome}"/>
+                </h:panelGrid>
+                <div class="form-actions">
+                    <h:commandButton class="btn btn-primary" action="#{supermercadosController.destroyAndView}" value="#{bundle.ViewSupermercadosDestroyLink}"/>
+                    <a />
+                    <h:link class="btn" outcome="Edit" value="#{bundle.ViewSupermercadosEditLink}"/>
+                    <a />
+                    <h:commandButton class="btn" action="#{supermercadosController.prepareCreate}" value="#{bundle.ViewSupermercadosCreateLink}" />
+                    <a />
+                    <h:commandButton class="btn" action="#{supermercadosController.prepareList}" value="#{bundle.ViewSupermercadosShowAllLink}"/>
+                </div>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

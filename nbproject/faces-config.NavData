@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="produtos/Create.xhtml" x="650" y="150" zoom="true"/>
+        <Node id="itenslistacompras/View.xhtml" x="1400" y="150" zoom="true"/>
+        <Node id="listacompras/List.xhtml" x="400" y="750" zoom="true"/>
+        <Node id="supermercados/Create.xhtml" x="900" y="300" zoom="true"/>
+        <Node id="default-list.xhtml" x="400" y="450" zoom="true"/>
+        <Node id="supermercados/List.xhtml" x="650" y="600" zoom="true"/>
+        <Node id="template.xhtml" x="900" y="450" zoom="true"/>
+        <Node id="supermercados/View.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="listacompras/View.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="comprar/Comprar.xhtml" x="1150" y="300" zoom="true"/>
+        <Node id="listacompras/Create.xhtml" x="400" y="300" zoom="true"/>
+        <Node id="supermercados/Edit.xhtml" x="150" y="750" zoom="true"/>
+        <Node id="index.xhtml" x="150" y="900" zoom="true"/>
+        <Node id="itenslistacompras/Create.xhtml" x="150" y="450" zoom="true"/>
+        <Node id="listacompras/Edit.xhtml" x="1150" y="150" zoom="true"/>
+        <Node id="itenslistacompras/List.xhtml" x="400" y="600" zoom="true"/>
+        <Node id="default.xhtml" x="650" y="300" zoom="true"/>
+        <Node id="produtos/List.xhtml" x="150" y="600" zoom="true"/>
+        <Node id="itenslistacompras/Edit.xhtml" x="650" y="450" zoom="true"/>
+        <Node id="produtos/Edit.xhtml" x="900" y="150" zoom="true"/>
+        <Node id="produtos/View.xhtml" x="400" y="150" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>
